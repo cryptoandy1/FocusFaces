@@ -1,113 +1,138 @@
+'use client'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import myPhoto from '../public/my-photo.png'
+import { Navbar, Card, Footer } from './components'
+import shirtGif from '../public/shirt.gif'
+import shirtPic from '../public/shirt-img.png'
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640)
+  const [isDark, setDark] = useState(true)
+
+  const handleResize = () => {
+    if (window.innerWidth < 640) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isMobile])
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div className={isDark ? 'dark' : ''}>
+      <Navbar isDark={isDark} toggleDark={() => setDark(!isDark)} />
+      <main className="bg-white min-h-full w-[100%] overflow-hidden dark:bg-slate-800">
+        <section className="mt-[9rem]">
+          <div className="flex flex-col-reverse justify-center max-w-[900px] text-center sm:grid sm:grid-cols-2 sm:text-left px-10 mx-auto">
+            <div>
+              <h2 className="text-5xl sm:text-7xl py-2 sm:py-4 text-green-900 font-medium">
+                Andrey <br /> Rublev
+              </h2>
+              <h3 className="text-2xl text-gray-800 dark:text-slate-100 sm:text-3xl py-1 sm:py-2">
+                Front-end developer
+              </h3>
+              <div className="relative">
+                <p className="text-md sm:text-lg py-1 text-gray-600 dark:text-slate-300 sm:py-2">
+                  Hi, I'm Andrey 👋
+                  <br />
+                  I love helping great ideas <br />
+                  to make their way into the web. <br />
+                  I'm focused on creating web applications with React.js <br />
+                  Currently residing in Antalya, Turkey.
+                  <br />
+                  Let's stay in touch and work together !
+                </p>
+              </div>
+              <div className="relative flex mt-5 py-2 border rounded-md border-dotted border-green-900 dark:bg-orange-950">
+                <img
+                  className="mx-auto p-2"
+                  src="https://skillicons.dev/icons?i=html,css,js,nextjs,react,tailwind,threejs"
+                />
+                <div className="animate-skillsMove absolute top-0 w-[100%] h-[100%]">
+                  <span className="absolute animate-pulse animate-skillsRotate box top-[-0.9rem] left-[-10%] bg-green-900 text-white dark:text-slate-100 border border-yellow-500 rounded-lg italic text-sm p-0.5 hover:animate-rotateOnce">
+                    Skills
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="my-auto">
+              <Image
+                src={myPhoto}
+                alt="my-photo"
+                className="w-[220px] sm:w-[250px] md:w-[300px] mx-auto"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <div className="px-10 mx-auto max-w-[900px] mt-20">
+            <h3 className="text-3xl py-1 text-center text-gray-900 md:text-left dark:text-slate-100">
+              About me
+            </h3>
+            <div className="flex flex-wrap justify-center text-center px-6 sm:px-0">
+              <div className="text-md sm:text-lg py-5 text-gray-600 md:text-justify dark:text-slate-300">
+                <p>
+                  I've been involved in programming since 2016. Coding is one of
+                  the two activities I can engage myself in all day long (second
+                  one is playing guitar 🎸😄)
+                </p>
+                <p>
+                  I started off by learning Python and I have basic skills in
+                  it. At the moment, my primary focus is on building responsive
+                  and interactive web-applications using React.js. Currently, I
+                  study Next.js as it's a recommended framework for modern React
+                  development.
+                </p>
+                <p>
+                  For several years I've been engaged in crypto sphere and have
+                  been involved in testing emerging projects there. So I have
+                  quite an interest in building something for web3 one day.
+                  Hence, Solidity is definately in my 'To do' list.
+                </p>
+                <p>
+                  Also, lately I became a big fan of Three.js library that
+                  simplifies workflow with WebGL and let us build absolutely
+                  beautiful things (one of which you can find in my portfolio
+                  section 😉 )
+                </p>
+                <p>
+                  I'm a team player with developed soft-skills constantly
+                  learning something new in tech field. I'm a self-disciplined
+                  person who respects deadlines.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3 className="text-3xl py-1 mb-6 mt-20 px-10 mx-auto max-w-[900px] text-center text-gray-900 md:text-left dark:text-slate-100">
+            Portfolio
+          </h3>
+          <div className="flex flex-col justify-center items-center px-10 mx-auto max-w-[900px] mt-10 mb-20">
+            <Card
+              gif={shirtGif}
+              pic={shirtPic}
+              name="T-shirt customizer"
+              desciption="A prototype of a customization tool for a piece of clothing that can
+            be applied in sales. A client can customize color of the t-shirt,
+            use local files to create a unique pattern or can ask DALL.E AI to
+            generate the pattern. I took the popular idea of a 'customization tool' and added some cool features to it using React and Three.js. I adjusted the
+            camera rig, enhanced some animation using framer-motion library,
+            made the app responsive, developed Cart interface and added an
+            option to save the AI-generated pattern for later use. As for
+            styling, I used Tailwind CSS."
+              builtWith={['React.js', 'Three.js', 'TailwindCSS']}
+              liveDemo="https://rublev-dev.com/shirt-customizer"
             />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
   )
 }
