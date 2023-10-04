@@ -31,11 +31,11 @@ const Navbar = ({ isDark, toggleDark }) => {
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = scrollY.getPrevious()
-    if (latest > previous && previous !== 0) {
+    if (latest > previous && previous !== 0 && latest > 110) {
       setVisible(false)
     }
 
-    if (previous > latest && previous !== window.innerHeight) {
+    if (previous > latest && window.innerHeight - latest > 110) {
       setVisible(true)
     }
   })
