@@ -8,14 +8,15 @@ const About = () => {
         <div className="flex flex-wrap justify-center text-justify px-6 sm:px-0">
           <div className="text-md sm:text-lg md:text-2xl py-5 text-gray-600 dark:text-slate-300">
             <p>
-              I&apos;ve been involved in programming since 2016. I'm self-taught
-              in this field. Coding for me is one of the two activities I can
-              engage myself in all day long (second one is playing guitar 🎸😄)
+              I&apos;ve been involved in programming since 2016. I&apos;m
+              self-taught in this field. Coding for me is one of the two
+              activities I can engage myself in all day long (second one is
+              playing guitar 🎸😄)
             </p>
             <p>
               I started off by learning Python and I have basic skills in it.
               But at the moment, my primary focus is on building responsive and
-              interactive web-applications using React.js. Currently, I'm
+              interactive web-applications using React.js. Currently, I&apos;m
               studying Next.js as a recommended framework for modern React
               development.
             </p>
@@ -33,9 +34,9 @@ const About = () => {
             </p>
             <p>
               I enjoy working in team and the process of sharing experience and
-              ideas beetween people, but I'm ok working by myself as well. Also,
-              I&apos;m a self-disciplined person who respects deadlines and I
-              like to see those qualities in people.
+              ideas beetween people, but I&apos;m ok working by myself as well.
+              Also, I&apos;m a self-disciplined person who respects deadlines
+              and I like to see those qualities in people.
             </p>
           </div>
         </div>
