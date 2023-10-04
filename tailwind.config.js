@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: ['class'],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -17,19 +17,19 @@ module.exports = {
       keyframes: {
         skillsMove: {
           '0%': {
-            transform: 'translateX(5%) translateY(0)',
+            transform: 'translateX(0) translateY(0)',
           },
           '41%': {
-            transform: 'translateX(105%) translateY(0)',
+            transform: 'translateX(100%) translateY(0)',
           },
           '50%': {
-            transform: 'translateX(105%) translateY(102%)',
+            transform: 'translateX(100%) translateY(102%)',
           },
           '91%': {
-            transform: 'translateX(5%) translateY(102%)',
+            transform: 'translateX(0%) translateY(102%)',
           },
           '100%': {
-            transform: 'translateX(5%) translateY(0)',
+            transform: 'translateX(0) translateY(0)',
           },
         },
       },

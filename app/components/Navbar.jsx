@@ -1,14 +1,20 @@
-'use client'
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { useEffect, useState } from 'react'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import Image from 'next/image'
-import resume from '../../public/resume.png'
+import images from '../images/images'
 
 const Navbar = ({ isDark, toggleDark }) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640)
-  const [prevScrollPos, setPrevScrolPos] = useState(window.scrollY)
+  const [isMobile, setIsMobile] = useState(true)
   const [isVisible, setVisible] = useState(true)
+  const { scrollY } = useScroll()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 640)
+    }
+  }, [])
 
   const handleResize = () => {
     if (window.innerWidth < 640) {
@@ -18,34 +24,36 @@ const Navbar = ({ isDark, toggleDark }) => {
     }
   }
 
-  const handleScroll = () => {
-    const currentScrollPos = window.scrollY
-    if (prevScrollPos > currentScrollPos) {
-      setVisible(true)
-    } else {
-      setVisible(false)
-    }
-    setPrevScrolPos(currentScrollPos)
-  }
-
   useEffect(() => {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [isMobile])
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [prevScrollPos])
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = scrollY.getPrevious()
+    if (latest > previous) {
+      setVisible(false)
+    } else {
+      setVisible(true)
+    }
+  })
 
   return (
-    <nav
-      className={`px-8 py-4 flex justify-between w-[100%] shadow-xl shadow-green-50  items-center bg-white bg-opacity-100 dark:bg-slate-900 dark:text-slate-100 dark:shadow-green-900 z-30 ${
-        isVisible ? 'fixed' : 'hidden'
+    <motion.nav
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: '-100%' },
+      }}
+      animate={isVisible ? 'visible' : 'hidden'}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
+      className={`fixed sm:h-[100px] xl:h-[120px] px-8 py-4 flex justify-between lg:justify-around w-[100%] items-center select-none z-30 ${
+        !isDark
+          ? 'bg-gray-400 backdrop-blur-md bg-opacity-10'
+          : 'text-slate-100 shadow-xl bg-gray-800 backdrop-blur-md bg-opacity-25 shadow-green-900'
       }`}
     >
       <h1
-        className="text-2xl font-giliams whitespace-nowrap cursor-pointer"
+        className="text-2xl sm:text-3xl font-giliams whitespace-nowrap cursor-pointer"
         onClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }}
@@ -53,7 +61,7 @@ const Navbar = ({ isDark, toggleDark }) => {
         rublev-dev
       </h1>
 
-      <ul className="flex items-center text-2xl gap-3 ">
+      <ul className="flex items-center text-2xl sm:text-3xl xl:text-4xl gap-3 ">
         {!isDark ? (
           <li onClick={toggleDark}>
             <BsFillMoonFill
@@ -91,7 +99,7 @@ const Navbar = ({ isDark, toggleDark }) => {
           {!isMobile ? (
             <a
               href="https://rublev-dev.com/files/Resume-Andrei-Rublev.pdf"
-              className="bg-green-900 text-white font-semibold text-sm px-4 py-2 rounded-md hover:bg-green-600 ease-in duration-300 hover:scale-105"
+              className="bg-green-900 text-white font-semibold text-sm sm:text-lg xl:text-xl px-4 py-2 rounded-md hover:bg-green-600 ease-in duration-300 hover:scale-105"
               target="_blank"
             >
               Resume .pdf
@@ -99,12 +107,12 @@ const Navbar = ({ isDark, toggleDark }) => {
           ) : (
             <a
               href="https://rublev-dev.com/files/Resume-Andrei-Rublev.pdf"
-              className="ease-in duration-300 hover:scale-125"
+              className="ease-in duration-300 hover:scale-125 "
               target="_blank"
             >
               <Image
                 className="bg-green-300 text-white rounded-md"
-                src={resume}
+                src={images.resume}
                 width={25}
                 alt="resume-pic"
               />
@@ -112,7 +120,7 @@ const Navbar = ({ isDark, toggleDark }) => {
           )}
         </li>
       </ul>
-    </nav>
+    </motion.nav>
   )
 }
 

@@ -24,3 +24,11 @@ body {
 .skills-span {
   transform-box: inherit;
 }
+
+/* @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .backdrop-blur {
+    background-color: rgba(49, 43, 43, 0.098);
+    -webkit-backdrop-filter: blur(2em);
+    backdrop-filter: blur(2em);
+  }
+} */

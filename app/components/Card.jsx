@@ -25,16 +25,15 @@ const Card = ({ gif, pic, name, desciption, builtWith, liveDemo }) => {
       }
     }
   }, [isHover])
-
   return (
     <>
       <div
         ref={ref}
-        className="flex flex-wrap max-w-[30rem] lg:max-w-none text-center sm:text-left border shadow hover:shadow-gray-950 transition-shadow duration-300 rounded-md bg-white dark:bg-orange-950 dark:hover:shadow-green-900"
+        className="flex flex-wrap max-w-[30rem] lg:max-w-[900px] text-center sm:text-left border shadow hover:shadow-gray-950 transition-shadow duration-300 rounded-md bg-white dark:bg-orange-950 dark:hover:shadow-green-900 z-[1]"
       >
         {isHover ? (
           <Image
-            className="flex-[1_1_300px] border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
+            className="flex-[2_1_300px] border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
             src={gif}
             alt="card-gif"
             width="300"
@@ -42,7 +41,7 @@ const Card = ({ gif, pic, name, desciption, builtWith, liveDemo }) => {
           />
         ) : (
           <Image
-            className="flex-[1_1_300px]  border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
+            className="flex-[2_1_300px]  border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
             src={pic}
             alt="card-pic"
             width="300"
@@ -50,17 +49,17 @@ const Card = ({ gif, pic, name, desciption, builtWith, liveDemo }) => {
           />
         )}
 
-        <div className="flex-[1_1_370px] p-8">
+        <div className="flex-[1_1_100px] p-8">
           <h3 className=" font-semibold mb-2 dark:text-gray-100">{name}</h3>
-          <p className="text-sm dark:text-gray-300">{desciption}</p>
+          <p className="text-base dark:text-gray-300">{desciption}</p>
           <br />
-          <p className="text-sm text-center dark:text-gray-300">
+          <p className="text-base text-center dark:text-gray-300">
             Built with:&nbsp;
             {builtWith.map((tech) => (
               <strong key={builtWith.indexOf(tech)}>{`${tech}`}&nbsp;</strong>
             ))}
           </p>
-          <div className="flex text-sm gap-4 mt-3 justify-around">
+          <div className="flex text-base gap-4 md:gap-2 mt-3 justify-around">
             <a
               href="https://github.com/cryptoandy1/shirt_customizer_threejs.git"
               target="_blank"
