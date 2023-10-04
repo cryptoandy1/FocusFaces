@@ -65,7 +65,7 @@ export default function Home() {
                 option to save the AI-generated pattern for later use. As for
                 styling, I used Tailwind CSS."
                 builtWith={['React.js', 'Three.js', 'TailwindCSS']}
-                liveDemo="https://rublev-dev.com/shirt-customizer"
+                liveDemo="https://shirt-customizer.rublev-dev.com"
               />
             </div>
           </section>

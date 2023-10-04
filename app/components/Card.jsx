@@ -25,29 +25,30 @@ const Card = ({ gif, pic, name, desciption, builtWith, liveDemo }) => {
       }
     }
   }, [isHover])
+
   return (
     <>
       <div
         ref={ref}
         className="flex flex-wrap max-w-[30rem] lg:max-w-[900px] text-center sm:text-left border shadow hover:shadow-gray-950 transition-shadow duration-300 rounded-md bg-white dark:bg-orange-950 dark:hover:shadow-green-900 z-[1]"
       >
-        {isHover ? (
-          <Image
-            className="flex-[2_1_300px] border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
-            src={gif}
-            alt="card-gif"
-            width="300"
-            height="300"
-          />
-        ) : (
-          <Image
-            className="flex-[2_1_300px]  border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
-            src={pic}
-            alt="card-pic"
-            width="300"
-            height="300"
-          />
-        )}
+        <Image
+          className="flex-[2_1_300px] border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
+          src={gif}
+          alt="card-gif"
+          width="300"
+          height="300"
+          priority={true}
+          hidden={isHover ? false : true}
+        />
+        <Image
+          className="flex-[2_1_300px] border rounded-t-md lg:rounded-t-none lg:rounded-l-md"
+          src={pic}
+          alt="card-pic"
+          width="300"
+          height="300"
+          hidden={isHover ? true : false}
+        />
 
         <div className="flex-[1_1_100px] p-8">
           <h3 className=" font-semibold mb-2 dark:text-gray-100">{name}</h3>

@@ -31,9 +31,11 @@ const Navbar = ({ isDark, toggleDark }) => {
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = scrollY.getPrevious()
-    if (latest > previous) {
+    if (latest > previous && previous !== 0) {
       setVisible(false)
-    } else {
+    }
+
+    if (previous > latest && previous !== window.innerHeight) {
       setVisible(true)
     }
   })
@@ -98,7 +100,7 @@ const Navbar = ({ isDark, toggleDark }) => {
           </a>
           {!isMobile ? (
             <a
-              href="https://rublev-dev.com/files/Resume-Andrei-Rublev.pdf"
+              href="https://files.rublev-dev.com/Resume-Andrei-Rublev.pdf"
               className="bg-green-900 text-white font-semibold text-sm sm:text-lg xl:text-xl px-4 py-2 rounded-md hover:bg-green-600 ease-in duration-300 hover:scale-105"
               target="_blank"
             >
@@ -106,7 +108,7 @@ const Navbar = ({ isDark, toggleDark }) => {
             </a>
           ) : (
             <a
-              href="https://rublev-dev.com/files/Resume-Andrei-Rublev.pdf"
+              href="https://files.rublev-dev.com/Resume-Andrei-Rublev.pdf"
               className="ease-in duration-300 hover:scale-125 "
               target="_blank"
             >
