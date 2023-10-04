@@ -17,26 +17,26 @@ const About = () => {
               I started off by learning Python and I have basic skills in it.
               But at the moment, my primary focus is on building responsive and
               interactive web-applications using React.js. Currently, I&apos;m
-              studying Next.js as a recommended framework for modern React
-              development.
+              practicing with Next.js as a recommended framework for modern
+              React development.
             </p>
             <p>
               For several years I&apos;ve been engaged in crypto sphere and have
-              been involved in testing emerging projects there. So I have quite
-              an interest in building something for web3 one day. Hence,
-              Solidity is definately in my &apos;To do&apos; list.
+              been involved in testing emerging crypto-projects. So I have quite
+              an interest in building something for web3. And therefore,
+              I&apos;m interested in Solidity development.
             </p>
             <p>
               Also, lately I&apos;ve become a big fan of Three.js library that
               simplifies workflow with WebGL API and let us build absolutely
-              beautiful things (some of which you can find in my
-              &apos;portfolio&apos; section and on this page as well 😉 )
+              beautiful things (some of which you can find in the
+              &apos;Portfolio&apos; section below and on this page as well 😉 )
             </p>
             <p>
               I enjoy working in team and the process of sharing experience and
-              ideas beetween people, but I&apos;m ok working by myself as well.
-              Also, I&apos;m a self-disciplined person who respects deadlines
-              and I like to see those qualities in people.
+              ideas beetween people, but I&apos;m ok with working by myself as
+              well. Also, I&apos;m a self-disciplined person who respects
+              deadlines and I like to see those qualities in people.
             </p>
           </div>
         </div>

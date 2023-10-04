@@ -37,7 +37,7 @@ const Profile = () => {
               height="48"
             />
             <div className="animate-skillsMove absolute top-0 left-0 w-[100%] h-[100%]">
-              <span className="absolute animate-pulse animate-skillsRotate top-[-13%] left-[-4%] bg-green-900 text-white dark:text-slate-100 border border-yellow-500 rounded-lg italic text-sm sm:text-base p-0.5 hover:animate-rotateOnce">
+              <span className="absolute top-[-13%] left-[-4%] bg-green-900 text-white dark:text-slate-100 border border-yellow-500 rounded-[50%] italic text-sm sm:text-base tracking-widest p-2 hover:animate-rotateOnce animate-skewBorder">
                 Skills
               </span>
             </div>
