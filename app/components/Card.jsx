@@ -64,13 +64,17 @@ const Card = ({ gif, pic, name, desciption, builtWith, liveDemo }) => {
             <a
               href="https://github.com/cryptoandy1/shirt_customizer_threejs.git"
               target="_blank"
-              className="card-link"
+              className="cool-button card-link"
             >
               Source code {'   '}
               <AiFillGithub size="1.3rem" className="inline-flex" />
             </a>
             <br />
-            <a href={liveDemo} target="_blank" className="card-link">
+            <a
+              href={liveDemo}
+              target="_blank"
+              className="cool-button card-link"
+            >
               Play around 👕
             </a>
           </div>

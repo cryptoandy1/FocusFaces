@@ -29,9 +29,12 @@ const Profile = () => {
             </p>
           </div>
           <div className="relative inline-flex mt-5 p-4 border rounded-md border-dotted border-green-900 dark:bg-orange-950">
-            <img
+            <Image
               className="mx-auto"
-              src="https://skillicons.dev/icons?i=html,css,js,nextjs,react,tailwind,threejs"
+              src={images.skills}
+              alt="skills-pic"
+              width="385.5"
+              height="48"
             />
             <div className="animate-skillsMove absolute top-0 left-0 w-[100%] h-[100%]">
               <span className="absolute animate-pulse animate-skillsRotate top-[-13%] left-[-4%] bg-green-900 text-white dark:text-slate-100 border border-yellow-500 rounded-lg italic text-sm sm:text-base p-0.5 hover:animate-rotateOnce">

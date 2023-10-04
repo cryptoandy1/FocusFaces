@@ -5,6 +5,7 @@ import myPhoto from './myPhoto.png'
 import resume from './resume.png'
 import shirtImg from './shirtImg.png'
 import shirtGif from './shirt.gif'
+import skills from './skills.svg'
 
 const images = {
   bg6,
@@ -14,6 +15,7 @@ const images = {
   resume,
   shirtImg,
   shirtGif,
+  skills,
 }
 
 export default images

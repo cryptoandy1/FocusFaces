@@ -100,7 +100,7 @@ const Navbar = ({ isDark, toggleDark }) => {
           {!isMobile ? (
             <a
               href="https://files.rublev-dev.com/Resume-Andrei-Rublev.pdf"
-              className="bg-green-900 text-white font-semibold text-sm sm:text-lg xl:text-xl px-4 py-2 rounded-md hover:bg-green-600 ease-in duration-300 hover:scale-105"
+              className="cool-button bg-green-900 text-white text-sm sm:text-lg xl:text-xl px-4 py-2 rounded-md hover:bg-green-600 ease-in duration-300 hover:scale-105"
               target="_blank"
             >
               Resume .pdf
