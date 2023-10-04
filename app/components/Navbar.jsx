@@ -34,8 +34,8 @@ const Navbar = ({ isDark, toggleDark }) => {
     if (latest > previous && previous !== 0 && latest > 110) {
       setVisible(false)
     }
-
-    if (previous > latest && window.innerHeight - latest > 110) {
+    console.log(previous, latest)
+    if (previous > latest && previous - latest > 15) {
       setVisible(true)
     }
   })
