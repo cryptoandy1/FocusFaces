@@ -33,3 +33,79 @@ body {
   /* transform: rotate(90deg); */
   border-radius: 25% 75% 58% 42% / 68% 32% 67% 33%;
 }
+
+@keyframes skewBorder {
+  0% {
+    border-radius: 50%;
+  }
+  17% {
+    border-radius: 80% 20% 53% 47% / 50% 50% 50% 50%;
+  }
+  34% {
+    border-radius: 84% 16% 65% 35% / 50% 78% 22% 50%;
+  }
+  51% {
+    border-radius: 50% 50% 50% 50% / 50% 79% 21% 50%;
+  }
+  68% {
+    border-radius: 50% 50% 89% 11% / 51% 53% 47% 49%;
+  }
+  85% {
+    border-radius: 50% 50% 49% 51% / 19% 53% 47% 81%;
+  }
+  100% {
+    border-radius: 50%;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    rotate: 0deg;
+    border-radius: 50%;
+  }
+  17% {
+    rotate: 60deg;
+    border-radius: 80% 20% 53% 47% / 50% 50% 50% 50%;
+  }
+  34% {
+    rotate: 120deg;
+    border-radius: 84% 16% 65% 35% / 50% 78% 22% 50%;
+  }
+  51% {
+    rotate: 180deg;
+    border-radius: 50% 50% 50% 50% / 50% 79% 21% 50%;
+  }
+  68% {
+    rotate: 240deg;
+    border-radius: 50% 50% 89% 11% / 51% 53% 47% 49%;
+  }
+  85% {
+    rotate: 300deg;
+    border-radius: 50% 50% 49% 51% / 19% 53% 47% 81%;
+  }
+  100% {
+    rotate: 360deg;
+    border-radius: 50%;
+  }
+}
+
+.animateBorder {
+  animation: skewBorder 5s linear infinite;
+}
+
+.rotateInf {
+  animation: rotate 1s linear 1;
+}
+
+.tooltip {
+  @apply absolute z-40;
+}
+
+/* Tooltip container */
+.tooltip {
+  @apply absolute inline-flex justify-center items-center top-[-50px] left-0 w-max h-[80%] invisible text-slate-100 bg-gray-800 backdrop-blur-[8px] bg-opacity-70 text-center p-2 rounded-md;
+}
+
+.tooltip-container:hover .tooltip {
+  @apply visible z-20;
+}

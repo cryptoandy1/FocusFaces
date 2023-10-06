@@ -20,13 +20,13 @@ module.exports = {
             transform: 'translateX(0) translateY(0)',
           },
           '41%': {
-            transform: 'translateX(100%) translateY(0)',
+            transform: 'translateX(106%) translateY(0)',
           },
           '50%': {
-            transform: 'translateX(100%) translateY(102%)',
+            transform: 'translateX(106%) translateY(120%)',
           },
           '91%': {
-            transform: 'translateX(0%) translateY(102%)',
+            transform: 'translateX(0%) translateY(120%)',
           },
           '100%': {
             transform: 'translateX(0) translateY(0)',

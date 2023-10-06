@@ -13,7 +13,7 @@ import {
   Background,
 } from './components'
 import images from './images/images'
-import { Suspense, useEffect } from 'react'
+import { useEffect } from 'react'
 
 export default function Home() {
   const snap = useSnapshot(state)
@@ -48,7 +48,7 @@ export default function Home() {
         </AnimatedSection>
         <AnimatedSection>
           <section className="bg-transparent relative z-[1] mb-[9rem] transition-all ease-in duration-300">
-            <h3 className="text-3xl sm:text-5xl py-1 mb-6 px-10 sm:px-[7rem] mx-auto max-w-[1100px] text-center text-gray-900 lg:text-left dark:text-slate-100">
+            <h3 className="text-3xl sm:text-5xl py-1 mb-6 px-10 sm:px-[7rem] mx-auto max-w-[1100px] text-center text-gray-900 lg:text-left dark:text-slate-100 transition-all duration-300 ease-in-out">
               Portfolio
             </h3>
             <div className="flex flex-col justify-center items-center px-10 mx-auto mt-10 mb-20">

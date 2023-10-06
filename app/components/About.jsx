@@ -2,11 +2,11 @@ const About = () => {
   return (
     <section className="bg-transparent z-[1] relative mb-[9rem] transition-all ease-in duration-300">
       <div className="px-10 sm:px-[7rem] mx-auto max-w-[1100px]">
-        <h3 className="text-3xl sm:text-5xl py-1 text-center text-gray-900 lg:text-left dark:text-slate-100">
+        <h3 className="text-3xl sm:text-5xl py-1 text-center text-gray-900 lg:text-left dark:text-slate-100 transition-all duration-300 ease-in-out">
           About me
         </h3>
         <div className="flex flex-wrap justify-center text-justify px-6 sm:px-0">
-          <div className="text-md sm:text-lg md:text-2xl py-5 text-gray-600 dark:text-slate-300">
+          <div className="text-md sm:text-lg md:text-2xl py-5 text-gray-600 dark:text-slate-300 transition-all duration-300 ease-in-out">
             <p>
               I&apos;ve been involved in programming since 2016. I&apos;m
               self-taught in this field. Coding for me is one of the two
