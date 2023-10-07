@@ -21,12 +21,13 @@ const Profile = () => {
             <p className="text-md sm:text-lg md:text-2xl py-1 text-center lg:text-justify text-gray-600 dark:text-slate-300 sm:py-2">
               Hi, I&apos;m Andrey 👋
               <br />
-              I love helping great ideas <br />
-              to make their way into the web. <br />
-              I&apos;m focused on creating web applications with React.js <br />
-              Currently live in Antalya, Turkey.
+              I&apos;m passionate about bringing <br />
+              great ideas to life on the web <br />
+              and I specialize in creating web applications with React.js.
               <br />
-              Let&apos;s work together !
+              I currently reside in Antalya, Turkey.
+              <br />
+              Let&apos;s collaborate !
             </p>
           </div>
           <Skills />

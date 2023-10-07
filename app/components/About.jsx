@@ -7,36 +7,36 @@ const About = () => {
         </h3>
         <div className="flex flex-wrap justify-center text-justify px-6 sm:px-0">
           <div className="text-md sm:text-lg md:text-2xl py-5 text-gray-600 dark:text-slate-300 transition-all duration-300 ease-in-out">
-            <p>
+            <p className="leading-10">
               I&apos;ve been involved in programming since 2016. I&apos;m
               self-taught in this field. Coding for me is one of the two
-              activities I can engage myself in all day long (second one is
+              activities I can engage myself in all day long (the second one is
               playing guitar 🎸😄)
             </p>
-            <p>
-              I started off by learning Python and I have basic skills in it.
-              But at the moment, my primary focus is on building responsive and
-              interactive web-applications using React.js. Currently, I&apos;m
-              practicing with Next.js as a recommended framework for modern
-              React development.
+            <p className="leading-10">
+              I began my programming journey by learning Python and acquiring
+              basic skills in the language. However, my current focus is
+              centered on creating responsive and interactive web applications
+              using React.js. I&apos;m presently honing my skills with Next.js
+              as a recommended framework for modern React development.
             </p>
-            <p>
-              For several years I&apos;ve been engaged in crypto sphere and have
-              been involved in testing emerging crypto-projects. So I have quite
-              an interest in building something for web3. And therefore,
-              I&apos;m interested in Solidity development.
+            <p className="leading-10">
+              Lately, I&apos;ve become a big fan of the Three.js library, which
+              simplifies working with the WebGL API and allows us to create
+              stunning visual experiences. You can find some examples of my work
+              in the 'Portfolio' section below and on this page as well 😉
             </p>
-            <p>
-              Also, lately I&apos;ve become a big fan of Three.js library that
-              simplifies workflow with WebGL API and let us build absolutely
-              beautiful things (some of which you can find in the
-              &apos;Portfolio&apos; section below and on this page as well 😉 )
+            <p className="leading-10">
+              For several years, I&apos;ve been actively engaged in the crypto
+              sphere, where I&apos;ve had the opportunity to test emerging
+              crypto-projects. This experience has piqued my interest in web3
+              development, particularly in Solidity development.
             </p>
-            <p>
-              I enjoy working in team and the process of sharing experience and
-              ideas beetween people, but I&apos;m ok with working by myself as
-              well. Also, I&apos;m a self-disciplined person who respects
-              deadlines and I like to see those qualities in people.
+            <p className="leading-10">
+              I enjoy working in teams and the process of sharing experiences
+              and ideas among colleagues. However, I am also comfortable working
+              independently. I am a self-disciplined individual who values
+              meeting deadlines, and I appreciate these qualities in others.
             </p>
           </div>
         </div>

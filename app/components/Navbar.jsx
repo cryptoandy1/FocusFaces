@@ -101,7 +101,7 @@ const Navbar = ({ isDark, toggleDark }) => {
               <AiFillGithub />
             </a>
             <a
-              href="https://files.rublev-dev.com/Resume-Andrei-Rublev.pdf"
+              href="https://files.rublev-dev.com/Resume-Rublev.pdf"
               className={`${
                 !isMobile
                   ? 'cool-button bg-green-900 text-white text-sm sm:text-lg xl:text-xl px-4 py-2'

@@ -60,7 +60,7 @@ export default function Home() {
                 be applied in sales. A client can customize color of the t-shirt,
                 use local files to create a unique pattern or can ask DALL.E AI to
                 generate the pattern. I took the popular idea of a 'customization tool' and added some cool features to it using React and Three.js. I adjusted the
-                'Camera' performance, enhanced some animation using framer-motion library,
+                Camera performance, enhanced some animation using Framer Motion library,
                 made the app responsive, developed Cart interface and added an
                 option to save the AI-generated pattern for later use. As for
                 styling, I used Tailwind CSS."
