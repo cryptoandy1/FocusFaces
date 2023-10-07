@@ -24,7 +24,8 @@ const About = () => {
               Lately, I&apos;ve become a big fan of the Three.js library, which
               simplifies working with the WebGL API and allows us to create
               stunning visual experiences. You can find some examples of my work
-              in the 'Portfolio' section below and on this page as well 😉
+              in the &apos;Portfolio&apos; section below and on this page as
+              well 😉
             </p>
             <p className="leading-10">
               For several years, I&apos;ve been actively engaged in the crypto
