@@ -59,7 +59,7 @@ const Carousel = ({ people, isDark }) => {
   );
 
   return (
-    <div className="relative w-full max-w-[1100px] mx-auto">
+    <div className="relative w-full max-w-[1100px] mx-auto ">
       <Swiper
         modules={[EffectCoverflow, Navigation, Autoplay, Pagination]}
         effect="coverflow"
@@ -85,13 +85,13 @@ const Carousel = ({ people, isDark }) => {
           431: { slidesPerView: 2, spaceBetween: 30 },
           768: { slidesPerView: 2.5, spaceBetween: 40 },
           1024: { slidesPerView: 3, spaceBetween: 75 },
-          1920: { slidesPerView: 4, spaceBetween: 100 },
+          1920: { slidesPerView: 3, spaceBetween: 100 },
         }}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex);
           setExpandedIndex(null); // при смене слайда сворачиваем
         }}
-        className="w-full h-[400px] transition-all duration-700 ease-in-out"
+        className="w-full carousel-wrapper h-[400px] transition-all duration-700 ease-in-out"
       >
         {photos.map((src, idx) => {
           const isActive = idx === activeIndex;
