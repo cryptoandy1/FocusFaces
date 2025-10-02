@@ -97,8 +97,6 @@ const Carousel = ({ people, isDark }) => {
           isDragging.current = false;
           swiperRef.current?.autoplay.start();
         }}
-        onSlidePrevTransitionStart={() => swiperRef.current?.autoplay.stop()}
-        onSlideNextTransitionStart={() => swiperRef.current?.autoplay.stop()}
         onSliderMove={() =>
           isDragging.current && swiperRef.current?.autoplay.stop()
         }
@@ -109,7 +107,22 @@ const Carousel = ({ people, isDark }) => {
           const isExpanded = idx === expandedIndex;
 
           return (
-            <SwiperSlide key={idx} className="flex items-center rounded-lg">
+            <SwiperSlide
+              key={idx}
+              className="flex items-center rounded-lg"
+              onMouseEnter={() => {
+                swiperRef.current?.autoplay.stop();
+              }}
+              onMouseLeave={() => {
+                swiperRef.current?.autoplay.start();
+              }}
+              onClick={() => {
+                setExpandedIndex(isExpanded ? null : idx);
+                swiperRef.current?.autoplay.stop();
+              }}
+              onTouchStart={() => swiperRef.current?.autoplay.stop()}
+              onTouchEnd={() => swiperRef.current?.autoplay.start()}
+            >
               <div className="relative mx-auto w-full rounded-lg h-full shadow-md shadow-slate-500 dark:shadow-yellow-100 transition-all duration-700 ease-in-out">
                 <Image
                   src={src}
@@ -131,6 +144,15 @@ const Carousel = ({ people, isDark }) => {
                     }
                     transition-opacity duration-700 ease-in-out
                   `}
+                  onMouseEnter={() => {
+                    setExpandedIndex(idx);
+                  }}
+                  onMouseLeave={() => {
+                    setExpandedIndex(null);
+                  }}
+                  onClick={() => {
+                    setExpandedIndex(isExpanded ? null : idx);
+                  }}
                 >
                   <div className="flex w-full text-container">
                     <div
@@ -138,23 +160,7 @@ const Carousel = ({ people, isDark }) => {
                       style={{ transform: `scaleY(${isActive ? 1 : 0})` }}
                     ></div>
 
-                    <div
-                      className="flex-1 text-white dark:text-black transition-all duration-700 ease-out select-none"
-                      onMouseEnter={() => {
-                        swiperRef.current?.autoplay.stop();
-                        setExpandedIndex(idx);
-                      }}
-                      onMouseLeave={() => {
-                        swiperRef.current?.autoplay.start();
-                        setExpandedIndex(null);
-                      }}
-                      onClick={() => {
-                        setExpandedIndex(isExpanded ? null : idx);
-                        swiperRef.current?.autoplay.stop();
-                      }}
-                      onTouchStart={() => swiperRef.current?.autoplay.stop()}
-                      onTouchEnd={() => swiperRef.current?.autoplay.start()}
-                    >
+                    <div className="flex-1 text-white dark:text-black transition-all duration-700 ease-out select-none">
                       <div className="flex items-center mb-2 space-x-2">
                         <h3 className="text-2xl font-bold">
                           {people[idx].name}
