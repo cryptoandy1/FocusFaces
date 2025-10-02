@@ -41,6 +41,24 @@ const Carousel = ({ people, isDark }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState(null);
 
+  // refs для текста всех слайдов
+  const textRefs = useRef([]);
+  textRefs.current = photos.map(
+    (_, i) => textRefs.current[i] ?? { current: null }
+  );
+
+  // Эффект для анимации высоты текста
+  useEffect(() => {
+    textRefs.current.forEach((ref, i) => {
+      if (!ref.current) return;
+      if (i === expandedIndex) {
+        ref.current.style.height = ref.current.scrollHeight + "px";
+      } else {
+        ref.current.style.height = "0px";
+      }
+    });
+  }, [expandedIndex]);
+
   return (
     <div className="relative w-full max-w-[1100px] mx-auto">
       <Swiper
@@ -79,17 +97,6 @@ const Carousel = ({ people, isDark }) => {
         {photos.map((src, idx) => {
           const isActive = idx === activeIndex;
           const isExpanded = idx === expandedIndex;
-          const textRef = useRef(null);
-
-          useEffect(() => {
-            const el = textRef.current;
-            if (!el) return;
-            if (isExpanded) {
-              el.style.height = el.scrollHeight + "px";
-            } else {
-              el.style.height = "0px";
-            }
-          }, [isExpanded]);
 
           return (
             <SwiperSlide key={idx} className="flex items-center rounded-lg">
@@ -135,7 +142,6 @@ const Carousel = ({ people, isDark }) => {
                         <h3 className="text-2xl font-bold">
                           {people[idx].name}
                         </h3>
-                        {/* Иконки контактов с фирменными цветами */}
                         {people[idx].contacts?.map((c, i) => {
                           const IconComponent = iconMap[c.label];
                           const colorClass =
@@ -154,14 +160,12 @@ const Carousel = ({ people, isDark }) => {
                         })}
                       </div>
 
-                      {/* Короткий description */}
                       <p className="text-md max-w-md duration-700 ease-in-out italic">
                         {people[idx].description}
                       </p>
 
-                      {/* Разворачиваемая часть */}
                       <div
-                        ref={textRef}
+                        ref={textRefs.current[idx]}
                         className="overflow-hidden transition-[height] duration-700 ease-in-out"
                       >
                         <br />
