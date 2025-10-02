@@ -34,18 +34,10 @@ const iconColorMap = {
 };
 
 const Carousel = ({ people, isDark }) => {
-  const photos = people.map((p) => p.photos[0]);
-  if (!photos || photos.length === 0) return null;
-  const enableLoop = photos.length > 3;
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState(null);
-
   // refs для текста всех слайдов
   const textRefs = useRef([]);
-  textRefs.current = photos.map(
-    (_, i) => textRefs.current[i] ?? { current: null }
-  );
 
   // Эффект для анимации высоты текста
   useEffect(() => {
@@ -58,6 +50,13 @@ const Carousel = ({ people, isDark }) => {
       }
     });
   }, [expandedIndex]);
+
+  const photos = people.map((p) => p.photos[0]);
+  if (!photos || photos.length === 0) return null;
+  const enableLoop = photos.length > 3;
+  textRefs.current = photos.map(
+    (_, i) => textRefs.current[i] ?? { current: null }
+  );
 
   return (
     <div className="relative w-full max-w-[1100px] mx-auto">
