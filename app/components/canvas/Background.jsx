@@ -1,16 +1,16 @@
-import { Canvas } from '@react-three/fiber'
-import Mesh from './Mesh'
+import { Canvas } from "@react-three/fiber";
+import Mesh from "./Mesh";
 
 const Background = ({ isDark }) => {
-  let width
-  let height
-  if (typeof window !== 'undefined') {
-    width = window.innerWidth
-    height = window.innerHeight
+  let width;
+  let height;
+  if (typeof window !== "undefined") {
+    width = window.innerWidth;
+    height = window.innerHeight;
   }
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full z-0">
+    <div className="absolute top-0 left-0 w-full h-full z-0 transition-all ease-in-out duration-700">
       <Canvas
         camera={{
           fov: 7.3,
@@ -23,7 +23,7 @@ const Background = ({ isDark }) => {
         <Mesh isDark={isDark} />
       </Canvas>
     </div>
-  )
-}
+  );
+};
 
-export default Background
+export default Background;

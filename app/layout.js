@@ -1,17 +1,17 @@
-import './globals.css'
+import "./globals.css";
 
 export const metadata = {
-  title: 'Andrey Rublev | Web Developer',
+  title: "Focus Faces Chicago",
   description:
-    'Web developer creating responsive and interactive web applications (websites) open to work and freelance',
+    "Visual stoytelling Chicago + AI-agent. Professional help in managing your online presence.",
   keywords:
-    'andrey rublev, web development, react, three.js, programmer, responsive design',
-}
+    "focus faces, business, Chicago, visual, ai, ai-agent, startup, online, social media, marketing, photography, branding",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>{children}</body>
     </html>
-  )
+  );
 }
