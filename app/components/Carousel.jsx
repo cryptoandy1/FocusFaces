@@ -68,7 +68,7 @@ const Carousel = ({ people, isDark }) => {
         spaceBetween={0}
         slidesPerView={1}
         loop={enableLoop}
-        // autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         speed={700}
         navigation={{ nextEl: ".custom-next", prevEl: ".custom-prev" }}
         pagination={{ el: ".custom-pagination", clickable: true }}
