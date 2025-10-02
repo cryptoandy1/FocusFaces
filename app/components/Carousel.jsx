@@ -40,7 +40,7 @@ const Carousel = ({ people, isDark }) => {
   const isDragging = useRef(false);
 
   const photos = people.map((p) => p.photos[0]);
-  if (!photos || photos.length === 0) return null;
+  // if (!photos || photos.length === 0) return null;
   const enableLoop = photos.length > 3;
   textRefs.current = photos.map(
     (_, i) => textRefs.current[i] ?? { current: null }
