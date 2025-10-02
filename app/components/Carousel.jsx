@@ -25,7 +25,6 @@ const iconMap = {
   Email: MdEmail,
 };
 
-// Фирменные цвета для иконок
 const iconColorMap = {
   Instagram: "text-pink-500",
   LinkedIn: "text-blue-600",
@@ -36,20 +35,9 @@ const iconColorMap = {
 const Carousel = ({ people, isDark }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState(null);
-  // refs для текста всех слайдов
   const textRefs = useRef([]);
-
-  // Эффект для анимации высоты текста
-  useEffect(() => {
-    textRefs.current.forEach((ref, i) => {
-      if (!ref.current) return;
-      if (i === expandedIndex) {
-        ref.current.style.height = ref.current.scrollHeight + "px";
-      } else {
-        ref.current.style.height = "0px";
-      }
-    });
-  }, [expandedIndex]);
+  const swiperRef = useRef(null);
+  const isDragging = useRef(false);
 
   const photos = people.map((p) => p.photos[0]);
   if (!photos || photos.length === 0) return null;
@@ -58,9 +46,19 @@ const Carousel = ({ people, isDark }) => {
     (_, i) => textRefs.current[i] ?? { current: null }
   );
 
+  // Анимация высоты текста
+  useEffect(() => {
+    textRefs.current.forEach((ref, i) => {
+      if (!ref.current) return;
+      ref.current.style.height =
+        i === expandedIndex ? ref.current.scrollHeight + "px" : "0px";
+    });
+  }, [expandedIndex]);
+
   return (
-    <div className="relative w-full max-w-[1100px] mx-auto ">
+    <div className="relative w-full max-w-[1100px] mx-auto">
       <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         modules={[EffectCoverflow, Navigation, Autoplay, Pagination]}
         effect="coverflow"
         grabCursor
@@ -89,8 +87,21 @@ const Carousel = ({ people, isDark }) => {
         }}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex);
-          setExpandedIndex(null); // при смене слайда сворачиваем
+          setExpandedIndex(null);
         }}
+        onTouchStart={() => {
+          isDragging.current = true;
+          swiperRef.current?.autoplay.stop();
+        }}
+        onTouchEnd={() => {
+          isDragging.current = false;
+          swiperRef.current?.autoplay.start();
+        }}
+        onSlidePrevTransitionStart={() => swiperRef.current?.autoplay.stop()}
+        onSlideNextTransitionStart={() => swiperRef.current?.autoplay.stop()}
+        onSliderMove={() =>
+          isDragging.current && swiperRef.current?.autoplay.stop()
+        }
         className="w-full carousel-wrapper h-[400px] transition-all duration-700 ease-in-out"
       >
         {photos.map((src, idx) => {
@@ -99,12 +110,7 @@ const Carousel = ({ people, isDark }) => {
 
           return (
             <SwiperSlide key={idx} className="flex items-center rounded-lg">
-              <div
-                className="relative mx-auto w-full rounded-lg h-full shadow-md shadow-slate-500 dark:shadow-yellow-100 transition-all duration-700 ease-in-out"
-                onMouseEnter={() => setExpandedIndex(idx)}
-                onMouseLeave={() => setExpandedIndex(null)}
-                onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-              >
+              <div className="relative mx-auto w-full rounded-lg h-full shadow-md shadow-slate-500 dark:shadow-yellow-100 transition-all duration-700 ease-in-out">
                 <Image
                   src={src}
                   alt={`slide-${idx}`}
@@ -112,7 +118,7 @@ const Carousel = ({ people, isDark }) => {
                   className="object-cover rounded-lg pointer-events-none select-none"
                 />
 
-                {/* Контейнер с текстом */}
+                {/* Контейнер текста */}
                 <div
                   className={`absolute inset-x-0 bottom-0 flex flex-col items-start px-8 py-6 overflow-hidden rounded-lg
                     ${
@@ -126,17 +132,29 @@ const Carousel = ({ people, isDark }) => {
                     transition-opacity duration-700 ease-in-out
                   `}
                 >
-                  <div className="flex w-full">
-                    {/* Вертикальная линия */}
+                  <div className="flex w-full text-container">
                     <div
                       className="w-1 bg-pink-600/80 dark:bg-yellow-500 rounded-full mr-4 origin-top transition-all duration-700 ease-in-out"
-                      style={{
-                        transform: `scaleY(${isActive ? 1 : 0})`,
-                      }}
+                      style={{ transform: `scaleY(${isActive ? 1 : 0})` }}
                     ></div>
 
-                    {/* Текст и контакты */}
-                    <div className="flex-1 text-white dark:text-black transition-all duration-700 ease-out select-none">
+                    <div
+                      className="flex-1 text-white dark:text-black transition-all duration-700 ease-out select-none"
+                      onMouseEnter={() => {
+                        swiperRef.current?.autoplay.stop();
+                        setExpandedIndex(idx);
+                      }}
+                      onMouseLeave={() => {
+                        swiperRef.current?.autoplay.start();
+                        setExpandedIndex(null);
+                      }}
+                      onClick={() => {
+                        setExpandedIndex(isExpanded ? null : idx);
+                        swiperRef.current?.autoplay.stop();
+                      }}
+                      onTouchStart={() => swiperRef.current?.autoplay.stop()}
+                      onTouchEnd={() => swiperRef.current?.autoplay.start()}
+                    >
                       <div className="flex items-center mb-2 space-x-2">
                         <h3 className="text-2xl font-bold">
                           {people[idx].name}
@@ -181,10 +199,8 @@ const Carousel = ({ people, isDark }) => {
         })}
       </Swiper>
 
-      {/* Пагинация */}
       <div className="custom-pagination absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10"></div>
 
-      {/* Кнопки */}
       <button className="custom-prev hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/70 dark:bg-black/70 hover:bg-white dark:hover:bg-black shadow-lg">
         <ChevronLeft className="w-6 h-6 text-zinc-600/80 dark:text-yellow-500 transition-all ease-in-out duration-700" />
       </button>
